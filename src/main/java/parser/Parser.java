@@ -3,6 +3,7 @@ package parser;
 import model.Attribute;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Parser implements ParserInterface {
@@ -24,6 +25,7 @@ public class Parser implements ParserInterface {
 
     public String parse(String input) {
         Map<Attribute, Position> result = new HashMap<Attribute, Position>();
+        //Map<Attribute, List<Position>> result = new HashMap<Attribute, List<Position>>();
 
         int firstIndex = input.indexOf(borderRadius.getName());
         int lastIndex = firstIndex + borderRadius.getName().length();
