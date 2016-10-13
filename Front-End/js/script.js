@@ -17,7 +17,7 @@ $(function () {
         var ext = this.value.match(/\.(.+)$/)[1];
         switch (ext) {
             case 'css':
-                $('#Button').attr('disabled', false);
+                $('#button').attr('disabled', false);
                 break;
             default:
                 alert('This is not an allowed file type.');
