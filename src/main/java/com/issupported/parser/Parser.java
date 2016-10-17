@@ -1,13 +1,12 @@
-package parser;
+package com.issupported.parser;
 
-import model.Attribute;
+import com.issupported.model.Attribute;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class Parser implements ParserInterface {
-
+public class Parser {
+/*
     private Attribute borderRadius;
     private Attribute margin;
 
@@ -50,5 +49,5 @@ public class Parser implements ParserInterface {
                     ", end=" + end +
                     '}';
         }
-    }
+    }*/
 }

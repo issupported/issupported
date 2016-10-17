@@ -1,4 +1,4 @@
-package parser;
+package com.issupported.parser;
 
 public interface ParserInterface {
 
