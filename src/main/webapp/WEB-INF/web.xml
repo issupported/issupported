@@ -26,7 +26,8 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            classpath:mybatis-context.xml
+            classpath:hibernate-context.xml
+            classpath:application-context.xml
         </param-value>
     </context-param>
 

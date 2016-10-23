@@ -1,20 +1,20 @@
 package com.issupported.service;
 
-import com.issupported.mappers.AttributeMapper;
+import com.issupported.dao.AttributeDao;
 import com.issupported.model.Attribute;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
-
-@Service("attributeService")
 public class AttributeService {
-
-    @Autowired
-    private AttributeMapper attributeMapper;
+    
+    private AttributeDao attributeDao;
 
     public List<Attribute> getAll() {
-        return attributeMapper.getAll();
+        return attributeDao.getAll();
+    }
+
+    public void setAttributeDao(AttributeDao attributeDao) {
+        this.attributeDao = attributeDao;
     }
 }
