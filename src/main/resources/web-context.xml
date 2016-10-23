@@ -14,6 +14,7 @@
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
     </bean>
+    <mvc:resources mapping="/static/**" location="WEB-INF/views/static/" />
 
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="messageConverters">
@@ -24,4 +25,6 @@
     </bean>
 
     <bean id="messageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
 </beans>

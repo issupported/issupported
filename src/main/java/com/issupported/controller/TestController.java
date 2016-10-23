@@ -26,7 +26,7 @@ public class TestController {
             "    cursor: col-resize;\n" +
             "}";
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
     public Map<Attribute, List<Position>> find() {
         attributesFinder = new AttributesFinder(attributeService.getAll());
         return attributesFinder.findAttributes(test);
