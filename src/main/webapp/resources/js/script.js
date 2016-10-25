@@ -1,6 +1,7 @@
 $(function () {
+    var inputFile = $('#file');
 
-    $('#file').bind('change', function(e) {
+    inputFile.bind('change', function(e) {
         e.preventDefault();
         const COEFFICIENT = 1024;
         var button = $('#button');
@@ -13,7 +14,8 @@ $(function () {
         }
         console.log('sizeFile', sizeFile);
     });
-    $('INPUT[type="file"]').change(function () {
+
+    inputFile.change(function () {
         var fileType = this.value.match(/\.(.+)$/)[1];
         switch (fileType) {
             case 'css':
@@ -24,4 +26,10 @@ $(function () {
                 this.value = '';
         }
     });
+    inputFile.submit(function (e) {
+        e.preventDefault();
+        var file = new FormData();
+        file.append('cssFile', this.files[0]);
+    });
+
 });
