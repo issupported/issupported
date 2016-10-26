@@ -27,4 +27,5 @@
     <bean id="messageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
 
     <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 </beans>
