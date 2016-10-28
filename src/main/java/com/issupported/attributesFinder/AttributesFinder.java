@@ -37,8 +37,8 @@ public class AttributesFinder {
                 }
             }
             result.put(attributes.get(i), positions);
-            //System.out.println(Thread.currentThread().getName() + ": " + attributes.get(i) + " with positions:" + positions.toString());
-            return null;
+
+            return null; //TODO: do something with this
         }));
         ExecutorService executorService = Executors.newFixedThreadPool(10);
         try {
