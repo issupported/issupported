@@ -1,5 +1,5 @@
-INSERT INTO public.attribute (id, name) VALUES (1, 'Border-radius');
-INSERT INTO public.attribute (id, name) VALUES (2, 'Cursor');
+INSERT INTO public.attribute (id, name) VALUES (1, 'border-radius');
+INSERT INTO public.attribute (id, name) VALUES (2, 'cursor');
 
 INSERT INTO public.browser (id, name) VALUES (1, 'Chrome');
 INSERT INTO public.browser (id, name) VALUES (2, 'IE');
