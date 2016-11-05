@@ -1,12 +1,12 @@
-var myapp = angular.module('myapp', []);
+var myApp = angular.module('myApp', []);
 
-myapp.controller('MainCtrl', function ($scope) {
+myApp.controller('MainCtrl', function ($scope) {
     $scope.showContent = function($fileContent){
         $scope.content = $fileContent;
     };
 });
 
-myapp.directive('onReadFile', function ($parse) {
+myApp.directive('onReadFile', function ($parse) {
     return {
         restrict: 'A',
         scope: false,
