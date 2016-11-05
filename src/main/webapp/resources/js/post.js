@@ -16,27 +16,27 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
     };
 }]);
 
-myApp.directive('onReadFile', function ($parse) { //TODO: ofter get, render file on page
-    return {
-        restrict: 'A',
-        scope: false,
-        link: function (scope, element, attrs) {
-            var fn = $parse(attrs.onReadFile);
-
-            element.on('change', function (onChangeEvent) {
-                var reader = new FileReader();
-
-                reader.onload = function (onLoadEvent) {
-                    scope.$apply(function () {
-                        fn(scope, {$fileContent: onLoadEvent.target.result});
-    });
-                };
-
-                reader.readAsText((onChangeEvent.srcElement || onChangeEvent.target).files[0]);
-            });
-        }
-    };
-});
+// myApp.directive('onReadFile', function ($parse) { //TODO: ofter get, render file on page
+//     return {
+//         restrict: 'A',
+//         scope: false,
+//         link: function (scope, element, attrs) {
+//             var fn = $parse(attrs.onReadFile);
+//
+//             element.on('change', function (onChangeEvent) {
+//                 var reader = new FileReader();
+//
+//                 reader.onload = function (onLoadEvent) {
+//                     scope.$apply(function () {
+//                         fn(scope, {$fileContent: onLoadEvent.target.result});
+//     });
+//                 };
+//
+//                 reader.readAsText((onChangeEvent.srcElement || onChangeEvent.target).files[0]);
+//             });
+//         }
+//     };
+// });
 
 myApp.service('fileUpload', ['$http', function ($http) {
     this.uploadFileToUrl = function (file, uploadUrl) {
@@ -59,9 +59,9 @@ myApp.service('fileUpload', ['$http', function ($http) {
 }]);
 
 myApp.controller('MainCtrl', ['$scope', 'fileUpload', function ($scope, fileUpload) {
-    $scope.showContent = function ($fileContent) {
-        $scope.content = $fileContent;
-    };
+    // $scope.showContent = function ($fileContent) {
+    //     $scope.content = $fileContent;
+    // };
     $scope.uploadFile = function () {
         var file = $scope.myFile;
 
