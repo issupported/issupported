@@ -16,7 +16,7 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
     };
 }]);
 
-myApp.directive('onReadFile', function ($parse) {
+myApp.directive('onReadFile', function ($parse) { //TODO: ofter get, render file on page
     return {
         restrict: 'A',
         scope: false,
@@ -29,7 +29,7 @@ myApp.directive('onReadFile', function ($parse) {
                 reader.onload = function (onLoadEvent) {
                     scope.$apply(function () {
                         fn(scope, {$fileContent: onLoadEvent.target.result});
-                    });
+    });
                 };
 
                 reader.readAsText((onChangeEvent.srcElement || onChangeEvent.target).files[0]);
