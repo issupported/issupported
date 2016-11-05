@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+    <script src="../../../resources/js/angular.min.js"></script>
+    <script src="../../../resources/js/parser.js"></script><!--TODO:// change path to /resources/js/script.js on production-->
+    <script src="../../../resources/js/script.js"></script>
+
+</head>
+
+<body ng-app="myapp">
+
+<div ng-controller="MainCtrl" class="container">
+    <h1>Select text file</h1>
+    <input id="form" type="file" on-read-file="showContent($fileContent)" />
+    <input id="button" type="button" value="send">
+    <div ng-if="content">
+        <h2>File content is:</h2>
+        <pre>{{ content }}</pre>
+    </div>
+    
+</div>
+
+
+</body>
+</html>
