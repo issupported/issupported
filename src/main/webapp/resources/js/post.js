@@ -26,8 +26,8 @@ myApp.service('fileUpload', ['$http', function ($http) {
             headers: {'Content-Type': undefined}
         })
 
-            .success(function(){
-                console.log('it work');
+            .success(function(data){
+                console.log('data', data);
             })
 
             .error(function(){
