@@ -38,6 +38,7 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
 //     };
 // });
 
+
 myApp.service('fileUpload', ['$http', function ($http) {
     this.uploadFileToUrl = function (file, uploadUrl) {
         var fd = new FormData();
