@@ -36,7 +36,9 @@ public class AttributesFinder {
                     break;
                 }
             }
-            result.put(attributes.get(i), positions);
+            if (positions.size() != 0) {
+                result.put(attributes.get(i), positions);
+            }
 
             return null; //TODO: do something with this
         }));
