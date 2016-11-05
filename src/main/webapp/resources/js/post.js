@@ -27,7 +27,7 @@ myApp.service('fileUpload', ['$http', function ($http) {
         })
 
             .success(function(){
-                console.log('work');
+                console.log('it work');
             })
 
             .error(function(){
