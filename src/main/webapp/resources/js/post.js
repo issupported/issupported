@@ -43,7 +43,7 @@ myApp.service('fileUpload', ['$http', function ($http) {
         var fd = new FormData();
         fd.append('file', file);
 
-        $http.post('', fd, {
+        $http.post('/parse', fd, {
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
         })
