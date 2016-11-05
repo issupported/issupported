@@ -28,9 +28,9 @@ public class FileController {
         Iterator<String> itr = request.getFileNames();
 
         MultipartFile mpf = request.getFile(itr.next());
-        String input = "";
+        String input = null;
         try {
-            input = String.valueOf(mpf.getBytes());
+            input = new String(mpf.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
