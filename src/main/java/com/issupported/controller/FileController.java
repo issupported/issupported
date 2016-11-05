@@ -22,7 +22,7 @@ public class FileController {
 
     private AttributeService attributeService;
 
-    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+    @RequestMapping(value = "/parse", method = RequestMethod.POST)
     public Map<Attribute, List<Position>> uploadFile(MultipartHttpServletRequest request, HttpServletResponse response) {
 
         Iterator<String> itr = request.getFileNames();
