@@ -16,7 +16,7 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
     };
 }]);
 
-myApp.directive('onReadFile', function ($parse) {
+myApp.directive('onReadFile', function ($parse) { //TODO: ofter get, render file on page
     return {
         restrict: 'A',
         scope: false,
