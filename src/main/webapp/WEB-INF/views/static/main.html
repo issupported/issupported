@@ -3,27 +3,30 @@
 <head>
     <title>Title</title>
     <meta charset="UTF-8">
-    <script src="../../../resources/js/angular.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
-    <script src="../../../resources/js/parser.js"></script><!--TODO:// change path to /resources/js/script.js on production-->
-    <script src="../../../resources/js/script.js"></script>
+    <script src="../../../resources/js/angular.min.js"></script>
+    <script src="../../../resources/js/parser.js"></script>
     <script src="../../../resources/js/post.js"></script>
+
+    <!--TODO:// change path to /resources/js/script.js on production-->
+    <script src="../../../resources/js/script.js"></script>
 
 </head>
 
 <body ng-app="myapp">
 
-<div ng-controller="mainCtrl" class="container">
+<div ng-controller="MainCtrl" class="container">
     <h1>Select text file</h1>
-    <input id="file" type='file' ng-model='parse'>
-
-    <input id="button" type='button' ng-click='parse' value='Add me new book please'>
+    <form method="post">
+        <input id="form" type="file" ng-model="file" on-read-file="showContent($fileContent)"/>
+        <input onclick="SendPost()" type="submit" value="send">
+    </form>
     <div ng-if="content">
         <h2>File content is:</h2>
         <pre>{{ content }}</pre>
     </div>
-    
+
 </div>
 
 
