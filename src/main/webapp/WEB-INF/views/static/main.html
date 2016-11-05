@@ -14,14 +14,14 @@
 
 </head>
 
-<body ng-app="myapp">
+<body ng-app="myApp">
 
 <div ng-controller="MainCtrl" class="container">
     <h1>Select text file</h1>
-    <form method="post">
-        <input id="form" type="file" ng-model="file" on-read-file="showContent($fileContent)"/>
-        <input onclick="SendPost()" type="submit" value="send">
-    </form>
+
+        <input id="form" type="file" file-model="myFile" on-read-file="showContent($fileContent)"/>
+        <input id="button" ng-click="uploadFile()" type="submit" value="send">
+
     <div ng-if="content">
         <h2>File content is:</h2>
         <pre>{{ content }}</pre>
