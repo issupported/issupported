@@ -3,7 +3,6 @@ package com.issupported.attributesFinder;
 import com.issupported.model.Attribute;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.*;
@@ -18,30 +17,12 @@ public class AttributesFinder {
         this.attributes = attributes;
     }
 
-    public  Map<Attribute, List<Position>> findAttributes(String input) { //TODO: refactor
+    public  Map<Attribute, List<Position>> findAttributes(String input) {
         result = new ConcurrentHashMap<>();
         List<Callable<String>> tasks = new ArrayList<>();
 
-        IntStream.range(0, attributes.size()).forEach(i -> tasks.add(() -> {
-            List<Position> positions = new ArrayList<>();
+        IntStream.range(0, attributes.size()).forEach(i -> tasks.add(new Parser(input, i)));
 
-            for (int j = 0; j < input.length(); j++) {
-                int firstIndex = input.indexOf(attributes.get(i).getName(), j);
-
-                if (firstIndex != -1) {
-                    int lastIndex = firstIndex + attributes.get(i).getName().length();
-                    j = lastIndex;
-                    positions.add(new Position(firstIndex, lastIndex));
-                } else {
-                    break;
-                }
-            }
-            if (positions.size() != 0) {
-                result.put(attributes.get(i), positions);
-            }
-
-            return null; //TODO: do something with this
-        }));
         ExecutorService executorService = Executors.newFixedThreadPool(10);
         try {
             executorService.invokeAll(tasks);
@@ -53,5 +34,37 @@ public class AttributesFinder {
 
         executorService.shutdown();
         return result;
+    }
+
+    private class Parser implements Callable<String> {
+        private String input;
+        private int attributeIndex;
+
+        Parser(String input, int attributeIndex) {
+            this.input = input;
+            this.attributeIndex = attributeIndex;
+        }
+
+        @Override
+        public String call() throws Exception {
+            List<Position> positions = new ArrayList<>();
+
+            for (int j = 0; j < input.length(); j++) {
+                int firstIndex = input.indexOf(attributes.get(attributeIndex).getName(), j);
+
+                if (firstIndex != -1) {
+                    int lastIndex = firstIndex + attributes.get(attributeIndex).getName().length();
+                    j = lastIndex;
+                    positions.add(new Position(firstIndex, lastIndex));
+                } else {
+                    break;
+                }
+            }
+            if (positions.size() != 0) {
+                result.put(attributes.get(attributeIndex), positions);
+            }
+
+            return null;
+        }
     }
 }
