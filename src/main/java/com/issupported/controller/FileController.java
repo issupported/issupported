@@ -36,6 +36,7 @@ public class FileController {
             e.printStackTrace();
         }
         AttributesFinder attributesFinder = new AttributesFinder(attributeService.getAll());
+        System.out.println("size:" + attributesFinder.findAttributes(input).size());
         return attributesFinder.findAttributes(input);
     }
 
