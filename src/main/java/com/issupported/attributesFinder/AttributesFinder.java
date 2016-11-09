@@ -2,30 +2,31 @@ package com.issupported.attributesFinder;
 
 import com.issupported.model.Attribute;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.*;
 import java.util.stream.IntStream;
 
 public class AttributesFinder {
 
     private List<Attribute> attributes;
-    private ConcurrentHashMap<Attribute, List<Position>>  result;
+    private Map<Attribute, List<Position>> result = new HashMap<>();
 
     public AttributesFinder(List<Attribute> attributes) {
         this.attributes = attributes;
     }
 
     public  Map<Attribute, List<Position>> findAttributes(String input) {
-        result = new ConcurrentHashMap<>();
-        List<Callable<String>> tasks = new ArrayList<>();
+        List<Callable<Object[]>> tasks = new ArrayList<>();
 
         IntStream.range(0, attributes.size()).forEach(i -> tasks.add(new Parser(input, i)));
 
         ExecutorService executorService = Executors.newFixedThreadPool(10);
         try {
-            executorService.invokeAll(tasks);
+            Object[] futureResult;
+            for (Future<Object[]> f: executorService.invokeAll(tasks)) {
+                futureResult = f.get();
+                result.put((Attribute) futureResult[0], (List<Position>) futureResult[1]);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -36,7 +37,7 @@ public class AttributesFinder {
         return result;
     }
 
-    private class Parser implements Callable<String> {
+    private class Parser implements Callable<Object[]> {
         private String input;
         private int attributeIndex;
 
@@ -46,8 +47,9 @@ public class AttributesFinder {
         }
 
         @Override
-        public String call() throws Exception {
+        public Object[] call() throws Exception {
             List<Position> positions = new ArrayList<>();
+            Object[] result = new Object[2];
 
             for (int j = 0; j < input.length(); j++) {
                 int firstIndex = input.indexOf(attributes.get(attributeIndex).getName(), j);
@@ -61,10 +63,11 @@ public class AttributesFinder {
                 }
             }
             if (positions.size() != 0) {
-                result.put(attributes.get(attributeIndex), positions);
+                result[0] = attributes.get(attributeIndex);
+                result[1] = positions;
             }
 
-            return null;
+            return result;
         }
     }
 }
