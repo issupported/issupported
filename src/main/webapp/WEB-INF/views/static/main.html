@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <title>Title</title>
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
     <script src="../../../resources/js/angular.min.js"></script>
+    <script src="../../../resources/js/script.js"></script>
     <script src="../../../resources/js/post.js"></script>
-    <!--<script src="../../../resources/js/script.js"></script>-->
+
+
+    <link href="../../../resources/style/mainCss.css" rel="stylesheet">
 
     <!--TODO:// change path to /resources/js/script.js on production-->
 
 </head>
 
-<body ng-app="myApp">
+<body ng-cloak>
 
 <div ng-controller="MainCtrl" class="container">
     <h1>Select text file</h1>
@@ -21,10 +23,14 @@
         <input id="file" type="file" file-model="myFile" on-read-file="showContent($fileContent)"/>
         <input id="button" ng-click="uploadFile()" type="submit" value="send">
 
+
+
     <div ng-if="content">
         <h2>File content is:</h2>
-        <pre>{{ content }}</pre>
+        <pre class="content">{{content}}</pre>
     </div>
+
+
 
 </div>
 
