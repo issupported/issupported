@@ -15,7 +15,8 @@ public class AttributesFinder {
         this.attributes = attributes;
     }
 
-    public  Map<Attribute, List<Position>> findAttributes(String input) {
+    @SuppressWarnings("unchecked")
+    public Map<Attribute, List<Position>> findAttributes(String input) {
         List<Callable<Object[]>> tasks = new ArrayList<>();
 
         IntStream.range(0, attributes.size()).forEach(i -> tasks.add(new Parser(input, i)));
@@ -23,7 +24,7 @@ public class AttributesFinder {
         ExecutorService executorService = Executors.newFixedThreadPool(10);
         try {
             Object[] futureResult;
-            for (Future<Object[]> f: executorService.invokeAll(tasks)) {
+            for (Future<Object[]> f : executorService.invokeAll(tasks)) {
                 futureResult = f.get();
                 result.put((Attribute) futureResult[0], (List<Position>) futureResult[1]);
             }
