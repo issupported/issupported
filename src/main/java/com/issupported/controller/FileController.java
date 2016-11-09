@@ -28,6 +28,7 @@ public class FileController {
         Iterator<String> itr = request.getFileNames();
 
         MultipartFile mpf = request.getFile(itr.next());
+        System.out.println(mpf.getSize()); //TODO: change to the logger
         String input = null;
         try {
             input = new String(mpf.getBytes());
