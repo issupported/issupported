@@ -5,35 +5,48 @@
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="../../../resources/js/angular.min.js"></script>
-    <script src="../../../resources/js/script.js"></script>
-    <script src="../../../resources/js/post.js"></script>
+    <!--<script src="../../../resources/js/script.js"></script>-->
+    <!--<script src="../../../resources/js/post.js"></script>-->
+    <script src="../../../resources/js/myApp.js"></script>
 
 
     <link href="../../../resources/style/mainCss.css" rel="stylesheet">
 
     <!--TODO:// change path to /resources/js/script.js on production-->
 
+<body>
 </head>
 
-<body ng-cloak>
-
-
-<div ng-controller="MainCtrl" class="container">
-    <h1>Select text file</h1>
-
-        <input id="file" type="file" file-model="myFile" on-read-file="showContent($fileContent)"/>
-        <input id="button" ng-click="uploadFile()" type="submit" value="send">
 
 
 
-    <div ng-if="content">
-        <h2>File content is:</h2>
-        <pre class="content">{{content}}</pre>
+
+    <div ng-controller="MyCtrl">
+        <div ng-controller="MainCtrl">
+
+        <input class="input" type="file" file-model="myFile" onchange="angular.element(this).scope().setFile(this)">
+        {{FileMessage}}
+       <input id="button" ng-click="uploadFile()" type="submit" value="send">
+        </div>
     </div>
 
+   <!--
+    <h1>Select text file</h1>
+
+       <input id="file" type="file" file-model="myFile" on-read-file="showContent($fileContent)" />
+       <input id="button" ng-click="uploadFile()" type="submit" value="send">
 
 
-</div>
+
+   <div ng-if="content">
+       <h2>File content is:</h2>
+        <pre class="content">{{content}}</pre>
+   </div
+    -->
+
+
+
+
 
 
 </body>
