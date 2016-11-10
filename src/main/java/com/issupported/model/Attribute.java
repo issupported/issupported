@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Map;
 
 @Entity
+@Embeddable
 @Table(name = "attribute")
 public class Attribute implements Serializable {
 

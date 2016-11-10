@@ -6,8 +6,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Embeddable
 @Table(name = "version")
 public class Version implements Serializable {
+
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
