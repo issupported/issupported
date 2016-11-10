@@ -18,6 +18,7 @@ public class AttributeSupportedByBrowser implements Serializable {
     @EmbeddedId
     private AttributeSupportedByBrowserId attributeSupportedByBrowserId;
 
+
     @Transient
     private Browser browser;
 
