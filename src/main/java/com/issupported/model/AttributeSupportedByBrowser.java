@@ -1,29 +1,23 @@
 package com.issupported.model;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "browser_to_attribute")
 public class AttributeSupportedByBrowser {
 
-    @Id
+    @EmbeddedId
+    private AttributeSupportedByBrowserId attributeSupportedByBrowserId;
+
     @OneToOne
-    @Fetch(FetchMode.JOIN)
     @JoinColumn(name = "browser_id")
     private Browser browser;
 
-    @Id
     @OneToOne
-    @Fetch(FetchMode.JOIN)
     @JoinColumn(name = "version_id")
     private Attribute attribute;
 
-    @Id
     @OneToOne
-    @Fetch(FetchMode.JOIN)
     @JoinColumn(name = "version_id")
     private Version version;
 

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @Entity
+@Embeddable
 @Table(name = "browser")
 public class Browser {
 
