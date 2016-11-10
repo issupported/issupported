@@ -5,21 +5,26 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "browser_to_attribute")
+@AssociationOverrides({
+        @AssociationOverride(name = "attributeSupportedByBrowserId.browser",
+                joinColumns = @JoinColumn(name = "browser_id")),
+        @AssociationOverride(name = "attributeSupportedByBrowserId.attribute",
+                joinColumns = @JoinColumn(name = "attribute_id")),
+        @AssociationOverride(name = "attributeSupportedByBrowserId.version",
+                joinColumns = @JoinColumn(name = "version_id"))
+})
 public class AttributeSupportedByBrowser implements Serializable {
 
     @EmbeddedId
     private AttributeSupportedByBrowserId attributeSupportedByBrowserId;
 
-    @OneToOne
-    @JoinColumn(name = "browser_id", insertable = false, updatable = false)
+    @Transient
     private Browser browser;
 
-    @OneToOne
-    @JoinColumn(name = "attribute_id", insertable = false, updatable = false)
+    @Transient
     private Attribute attribute;
 
-    @OneToOne
-    @JoinColumn(name = "version_id", insertable = false, updatable = false)
+    @Transient
     private Version version;
 
     @Column(name = "supported")

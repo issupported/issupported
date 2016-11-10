@@ -10,9 +10,8 @@ import java.util.List;
 import java.util.Map;
 
 @Entity
-@Embeddable
 @Table(name = "browser")
-public class Browser {
+public class Browser implements Serializable {
 
     @Id
     @GeneratedValue(generator = "increment")

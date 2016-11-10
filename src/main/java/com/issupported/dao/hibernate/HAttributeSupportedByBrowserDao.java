@@ -12,8 +12,8 @@ public class HAttributeSupportedByBrowserDao implements AttributeSupportedByBrow
 
     @Override
     public AttributeSupportedByBrowser getByAttribute(Attribute attribute) {
-        Query query = sessionFactory.getCurrentSession().createQuery("select asbb from AttributeSupportedByBrowser asbb where asbb.attribute = :attribute");
-        query.setParameter("attribute", attribute);
+        Query query = sessionFactory.getCurrentSession().createQuery("select asbb from AttributeSupportedByBrowser asbb where asbb.attribute.id = :id");
+        query.setParameter("id", attribute.getId());
         return (AttributeSupportedByBrowser) query.uniqueResult();
     }
 

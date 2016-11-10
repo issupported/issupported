@@ -1,15 +1,13 @@
 package com.issupported.model;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.Map;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "attribute")
-public class Attribute {
+public class Attribute implements Serializable {
 
     @Id
     @GeneratedValue(generator = "increment")
