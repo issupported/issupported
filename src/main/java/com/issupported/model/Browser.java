@@ -5,12 +5,13 @@ import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
 @Entity
 @Table(name = "browser")
-public class Browser {
+public class Browser implements Serializable {
 
     @Id
     @GeneratedValue(generator = "increment")
