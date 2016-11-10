@@ -11,15 +11,15 @@ public class AttributeSupportedByBrowser implements Serializable {
     private AttributeSupportedByBrowserId attributeSupportedByBrowserId;
 
     @OneToOne
-    @JoinColumn(name = "browser_id")
+    @JoinColumn(name = "browser_id", insertable = false, updatable = false)
     private Browser browser;
 
     @OneToOne
-    @JoinColumn(name = "attribute_id")
+    @JoinColumn(name = "attribute_id", insertable = false, updatable = false)
     private Attribute attribute;
 
     @OneToOne
-    @JoinColumn(name = "version_id")
+    @JoinColumn(name = "version_id", insertable = false, updatable = false)
     private Version version;
 
     @Column(name = "supported")
