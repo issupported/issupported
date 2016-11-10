@@ -23,6 +23,16 @@ myApp.controller('MainCtrl', ['$scope', 'fileUpload', function ($scope, fileUplo
             console.log('size:', sizeFile);
 
             if (strsubstring == '.css' && sizeFile <= MAXSIZE) {
+                $scope.uploadFile = function () {
+                    var file = $scope.myFile;
+
+                    console.log('file is ');
+                    console.dir(file);
+
+                    var uploadUrl = "/fileUpload";
+                    fileUpload.uploadFileToUrl(file, uploadUrl);
+                };
+
                 console.log('File Uploaded sucessfully');
             }
             else {
@@ -33,15 +43,6 @@ myApp.controller('MainCtrl', ['$scope', 'fileUpload', function ($scope, fileUplo
             }
 
         });
-    };
-    $scope.uploadFile = function () {
-        var file = $scope.myFile;
-
-        console.log('file is ');
-        console.dir(file);
-
-        var uploadUrl = "/fileUpload";
-        fileUpload.uploadFileToUrl(file, uploadUrl);
     };
 
 }]);
