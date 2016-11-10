@@ -22,12 +22,10 @@
 
 
         <div ng-controller="MainCtrl">
-    <div ng-controller="MyCtrl">
 
         <input class="input" type="file" file-model="myFile" onchange="angular.element(this).scope().setFile(this)">
         {{FileMessage}}
        <input id="button" ng-click="uploadFile()" type="submit" value="send">
-        </div>
     </div>
 
    <!--

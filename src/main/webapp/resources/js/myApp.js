@@ -1,16 +1,16 @@
 var myApp = angular.module('myApp', []);
 
-myApp.controller('MyCtrl', function($scope) {
 
-    $scope.setFile = function(element) {
+myApp.controller('MainCtrl', ['$scope', 'fileUpload', function ($scope, fileUpload) {
 
-        $scope.$apply(function($scope) {
+    $scope.setFile = function (element) {
+
+        $scope.$apply(function ($scope) {
 
             $scope.theFile = element.files[0];
             console.log($scope.theFile);
 
             $scope.FileMessage = '';
-
 
 
             var filename = $scope.theFile.name;
@@ -22,8 +22,7 @@ myApp.controller('MyCtrl', function($scope) {
 
             console.log('size:', sizeFile);
 
-            if (strsubstring == '.css' && sizeFile <= MAXSIZE)
-            {
+            if (strsubstring == '.css' && sizeFile <= MAXSIZE) {
                 console.log('File Uploaded sucessfully');
             }
             else {
@@ -35,19 +34,28 @@ myApp.controller('MyCtrl', function($scope) {
 
         });
     };
+    $scope.uploadFile = function () {
+        var file = $scope.myFile;
 
-});
+        console.log('file is ');
+        console.dir(file);
+
+        var uploadUrl = "/fileUpload";
+        fileUpload.uploadFileToUrl(file, uploadUrl);
+    };
+
+}]);
 
 
 myApp.directive('fileModel', ['$parse', function ($parse) {
     return {
         restrict: 'A',
-        link: function(scope, element, attrs) {
+        link: function (scope, element, attrs) {
             var model = $parse(attrs.fileModel);
             var modelSetter = model.assign;
 
-            element.bind('change', function(){
-                scope.$apply(function(){
+            element.bind('change', function () {
+                scope.$apply(function () {
                     modelSetter(scope, element[0].files[0]);
                 });
             });
@@ -56,7 +64,7 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
 }]);
 
 myApp.service('fileUpload', ['$http', function ($http) {
-    this.uploadFileToUrl = function(file, uploadUrl){
+    this.uploadFileToUrl = function (file, uploadUrl) {
         var fd = new FormData();
         fd.append('file', file);
 
@@ -65,25 +73,15 @@ myApp.service('fileUpload', ['$http', function ($http) {
             headers: {'Content-Type': undefined}
         })
 
-            .success(function(){
+            .success(function () {
             })
 
-            .error(function(){
+            .error(function () {
             });
     }
 }]);
 
-myApp.controller('myCtrl', ['$scope', 'fileUpload', function($scope, fileUpload){
-    $scope.uploadFile = function(){
-        var file = $scope.myFile;
 
-        console.log('file is ' );
-        console.dir(file);
-
-        var uploadUrl = "/fileUpload";
-        fileUpload.uploadFileToUrl(file, uploadUrl);
-    };
-}]);
 
 
 
