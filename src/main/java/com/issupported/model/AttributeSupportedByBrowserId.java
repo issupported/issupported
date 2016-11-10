@@ -12,7 +12,7 @@ public class AttributeSupportedByBrowserId implements Serializable {
     @Column(name = "browser_id")
     private int browserId;
 
-    @Column(name = "version_id")
+    @Column(name = "attribute_id")
     private int attributeId;
 
     @Column(name = "version_id")
