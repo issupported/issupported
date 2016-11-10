@@ -8,17 +8,17 @@ public class AttributeSupportedByBrowser {
 
     @Id
     @OneToOne
-    @Column(name = "browser_id")
+    @JoinColumn(name = "browser_id")
     private Browser browser;
 
     @Id
     @OneToOne
-    @Column(name = "version_id")
+    @JoinColumn(name = "version_id")
     private Attribute attribute;
 
     @Id
     @OneToOne
-    @Column(name = "version_id")
+    @JoinColumn(name = "version_id")
     private Version version;
 
     @Column(name = "supported")
