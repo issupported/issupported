@@ -3,12 +3,10 @@ package com.issupported.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
-@Embeddable
 @Table(name = "version")
-public class Version implements Serializable {
+public class Version {
 
     @Id
     @GeneratedValue(generator = "increment")

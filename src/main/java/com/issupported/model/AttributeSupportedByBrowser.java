@@ -1,21 +1,29 @@
 package com.issupported.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "browser_to_attribute")
-public class AttributeSupportedByBrowser implements Serializable {
+public class AttributeSupportedByBrowser {
 
-    @EmbeddedId
+    @Id
+    @OneToOne
+    @Fetch(FetchMode.JOIN)
     @JoinColumn(name = "browser_id")
     private Browser browser;
 
-    @EmbeddedId
+    @Id
+    @OneToOne
+    @Fetch(FetchMode.JOIN)
     @JoinColumn(name = "version_id")
     private Attribute attribute;
 
-    @EmbeddedId
+    @Id
+    @OneToOne
+    @Fetch(FetchMode.JOIN)
     @JoinColumn(name = "version_id")
     private Version version;
 

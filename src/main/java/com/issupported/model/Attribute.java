@@ -5,13 +5,11 @@ import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Map;
 
 @Entity
-@Embeddable
 @Table(name = "attribute")
-public class Attribute implements Serializable {
+public class Attribute {
 
     @Id
     @GeneratedValue(generator = "increment")
