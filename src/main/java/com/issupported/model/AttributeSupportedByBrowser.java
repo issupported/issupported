@@ -1,10 +1,11 @@
 package com.issupported.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "browser_to_attribute")
-public class AttributeSupportedByBrowser {
+public class AttributeSupportedByBrowser implements Serializable {
 
     @EmbeddedId
     private AttributeSupportedByBrowserId attributeSupportedByBrowserId;
