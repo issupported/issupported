@@ -16,28 +16,27 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
     };
 }]);
 
-myApp.directive('onReadFile', function ($parse) { //TODO: ofter get, render file on page
-    return {
-        restrict: 'A',
-        scope: false,
-        link: function (scope, element, attrs) {
-            var fn = $parse(attrs.onReadFile);
-
-            element.on('change', function (onChangeEvent) {
-                var reader = new FileReader();
-
-                reader.onload = function (onLoadEvent) {
-                    scope.$apply(function () {
-                        fn(scope, {$fileContent: onLoadEvent.target.result});
-    });
-                };
-
-                reader.readAsText((onChangeEvent.srcElement || onChangeEvent.target).files[0]);
-            });
-        }
-    };
-});
-
+// myApp.directive('onReadFile', function ($parse) { //TODO: ofter get, render file on page
+//     return {
+//         restrict: 'A',
+//         scope: false,
+//         link: function (scope, element, attrs) {
+//             var fn = $parse(attrs.onReadFile);
+//
+//             element.on('change', function (onChangeEvent) {
+//                 var reader = new FileReader();
+//
+//                 reader.onload = function (onLoadEvent) {
+//                     scope.$apply(function () {
+//                         fn(scope, {$fileContent: onLoadEvent.target.result});
+//     });
+//                 };
+//
+//                 reader.readAsText((onChangeEvent.srcElement || onChangeEvent.target).files[0]);
+//             });
+//         }
+//     };
+// });
 
 myApp.service('fileUpload', ['$http', function ($http) {
     this.uploadFileToUrl = function (file, uploadUrl) {
@@ -62,9 +61,19 @@ myApp.service('fileUpload', ['$http', function ($http) {
 myApp.controller('MainCtrl', ['$scope', 'fileUpload', function ($scope, fileUpload) {
     $scope.showContent = function ($fileContent) {
         $scope.content = $fileContent;
-        var res = $fileContent.split('');
-         // var a = res.indexOf('c', 43);
-        console.log('res', res);
+        // var res = $fileContent.split('');
+        // var string = '';
+        // for ( var i = 43; i<=48; i++){
+        //     // $scope.array = res[i];
+        //     console.log("res", res[i]);
+        //     string += res[i];
+        //     // string.wrap("<a>" + "</a>");
+        //
+        // }
+        // console.log('string', string);
+        // // console.log('b', b);
+        // console.log('res', res);
+        // // console.log('a', a);
 
 
     };
@@ -75,6 +84,7 @@ myApp.controller('MainCtrl', ['$scope', 'fileUpload', function ($scope, fileUplo
         console.dir(file);
 
         var uploadUrl = "/fileUpload";
+        console.log(uploadUrl);
         fileUpload.uploadFileToUrl(file, uploadUrl);
     };
 }]);
