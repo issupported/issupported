@@ -12,6 +12,7 @@ myApp.controller('MyCtrl', function($scope) {
             $scope.FileMessage = '';
 
 
+
             var filename = $scope.theFile.name;
             var index = filename.lastIndexOf(".");
             var strsubstring = filename.substring(index, filename.length);
