@@ -2,8 +2,6 @@ package com.issupported.model;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import java.io.Serializable;
 
 @Embeddable
