@@ -18,7 +18,7 @@ myApp.controller('MainCtrl', ['$scope', 'fileUpload', function ($scope, fileUplo
             var strsubstring = filename.substring(index, filename.length);
             var sizeFile = $scope.theFile.size;
 
-            const MAXSIZE = 200;
+            const MAXSIZE = 5000;
 
             console.log('size:', sizeFile);
 
@@ -83,8 +83,3 @@ myApp.service('fileUpload', ['$http', function ($http) {
             });
     }
 }]);
-
-
-
-
-
