@@ -3,22 +3,21 @@ package com.issupported.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
-@Table(name = "attribute")
-public class Attribute implements Serializable {
+@Table(name = "version")
+public class Version {
 
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "id")
-    private long id;
+    private int id;
 
     @Column(name = "name")
     private String name;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -35,25 +34,17 @@ public class Attribute implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Attribute attribute = (Attribute) o;
+        Version version = (Version) o;
 
-        if (id != attribute.id) return false;
-        return name.equals(attribute.name);
+        if (id != version.id) return false;
+        return name.equals(version.name);
 
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
+        int result = id;
         result = 31 * result + name.hashCode();
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Attribute{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
     }
 }
