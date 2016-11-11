@@ -29,6 +29,7 @@ myApp.controller('MainCtrl', ['$scope', 'fileUpload', function ($scope, fileUplo
                     console.log('file is ');
                     console.dir(file);
 
+
                     var uploadUrl = "/fileUpload";
                     fileUpload.uploadFileToUrl(file, uploadUrl);
                 };
