@@ -43,7 +43,7 @@ public class FileController {
         Map<Attribute, List<Position>> parsedResult =attributesFinder.findAttributes(input);
 
         Map<List<BrowserSupported>, List<Position>> finalResult = new HashMap<>();
-        Attribute[] objects= parsedResult.keySet().toArray(new Attribute[parsedResult.keySet().size()]);
+        Attribute[] objects= parsedResult.keySet().toArray(new Attribute[parsedResult.keySet().size()]); //TODO: refactor
         List<BrowserSupported> browserSupportedList;
         for (Attribute a: objects) {
             browserSupportedList = browserSupportedService.getByAttribute(a);
