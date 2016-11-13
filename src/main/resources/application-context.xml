@@ -2,14 +2,14 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean class="com.issupported.service.AttributeSupportedByBrowserService" id="attributeSupportedByBrowserService">
-        <property name="attributeSupportedByBrowserDao" ref="attributeSupportedByBrowserDao"/>
+    <bean class="com.issupported.service.BrowserSupportedService" id="browserSupportedService">
+        <property name="browserSupportedDao" ref="browserSupportedDao"/>
     </bean>
     <bean class="com.issupported.service.AttributeService" id="attributeService">
         <property name="attributeDao" ref="attributeDao"/>
     </bean>
 
-    <bean class="com.issupported.dao.hibernate.HAttributeSupportedByBrowserDao" id="attributeSupportedByBrowserDao">
+    <bean class="com.issupported.dao.hibernate.HBrowserSupportedDao" id="browserSupportedDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     <bean class="com.issupported.dao.hibernate.HAttributeDao" id="attributeDao"> 

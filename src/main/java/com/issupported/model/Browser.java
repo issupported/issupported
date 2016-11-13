@@ -22,14 +22,8 @@ public class Browser implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @OneToMany
-    @Fetch(FetchMode.JOIN)
-    @JoinTable(
-            name = "browser_to_version",
-            joinColumns = @JoinColumn(name = "browser_id"),
-            inverseJoinColumns = @JoinColumn(name = "version_id")
-    )
-    private List<Version> versions;
+    @Column(name = "version")
+    private String version;
 
     public int getId() {
         return id;
@@ -43,12 +37,12 @@ public class Browser implements Serializable {
         this.name = name;
     }
 
-    public List<Version> getVersions() {
-        return versions;
+    public String getVersion() {
+        return version;
     }
 
-    public void setVersions(List<Version> versions) {
-        this.versions = versions;
+    public void setVersion(String version) {
+        this.version = version;
     }
 
     @Override
@@ -59,16 +53,25 @@ public class Browser implements Serializable {
         Browser browser = (Browser) o;
 
         if (id != browser.id) return false;
-        if (!name.equals(browser.name)) return false;
-        return versions.equals(browser.versions);
+        if (name != null ? !name.equals(browser.name) : browser.name != null) return false;
+        return version != null ? version.equals(browser.version) : browser.version == null;
 
     }
 
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + name.hashCode();
-        result = 31 * result + versions.hashCode();
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (version != null ? version.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Browser{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", version='" + version + '\'' +
+                '}';
     }
 }
