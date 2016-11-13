@@ -20,6 +20,7 @@ public class BrowserSupported implements Serializable {
 
     @Column(name = "supported")
     private String supported; //TODO: enum
+    //TODO: store some statistics
 
     public BrowserSupportedId getId() {
         return id;
