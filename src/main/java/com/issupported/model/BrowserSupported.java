@@ -19,7 +19,9 @@ public class BrowserSupported implements Serializable {
     private Attribute attribute;
 
     @Column(name = "supported")
-    private String supported; //TODO: enum
+    @Enumerated(EnumType.STRING)
+    private Supported supported;
+
     //TODO: store some statistics
 
     public BrowserSupportedId getId() {
@@ -42,11 +44,11 @@ public class BrowserSupported implements Serializable {
         this.attribute = attribute;
     }
 
-    public String getSupported() {
+    public Supported getSupported() {
         return supported;
     }
 
-    public void setSupported(String supported) {
+    public void setSupported(Supported supported) {
         this.supported = supported;
     }
 
