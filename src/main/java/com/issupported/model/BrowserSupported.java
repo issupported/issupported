@@ -33,7 +33,7 @@ public class BrowserSupported implements Serializable {
     //@CollectionTable(name="browser_to_attribute", joinColumns=@JoinColumn(name="browser_id"))
     private Map<Attribute, Supported> attributeSupported = new HashMap<>();
 
-    //TODO: store some statistics g
+    //TODO: store some statistics
 
     public BrowserSupportedId getId() {
         return id;
