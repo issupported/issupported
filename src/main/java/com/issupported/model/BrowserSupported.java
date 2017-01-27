@@ -29,7 +29,7 @@ public class BrowserSupported implements Serializable {
 
     @ElementCollection
     @MapKeyColumn(name = "attribute_id")
-    @Column(name="supported") @Enumerated(EnumType.STRING)
+    @JoinColumn(name="supported_status_id") @Enumerated(EnumType.STRING)
     //@CollectionTable(name="browser_to_attribute", joinColumns=@JoinColumn(name="browser_id"))
     private Map<Attribute, Supported> attributeSupported = new HashMap<>();
 
