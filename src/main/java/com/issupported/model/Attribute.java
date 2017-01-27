@@ -13,12 +13,12 @@ public class Attribute implements Serializable {
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "id")
-    private long id;
+    private int id;
 
     @Column(name = "name")
     private String name;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -44,8 +44,8 @@ public class Attribute implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + name.hashCode();
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
 

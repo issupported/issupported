@@ -21,6 +21,7 @@ public class HBrowserSupportedDao implements com.issupported.dao.BrowserSupporte
         return query.list();
     }
 
+
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }

@@ -2,6 +2,7 @@ package com.issupported.model;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,34 +11,34 @@ import java.util.Map;
 
 @Entity
 @Table(name = "browser_to_attribute")
-public class BrowserSupported implements Serializable {
+public class BrowserSupported implements Serializable{
 
-    @EmbeddedId
-    private BrowserSupportedId id;
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "id")
+    private int id;
 
     @ManyToOne
-    @JoinColumn(name = "browser_id", insertable = false, updatable = false)
+    @JoinColumn(name = "browser_id")
     private Browser browser;
 
     @ManyToOne
-    @JoinColumn(name = "attribute_id", insertable = false, updatable = false)
+    @JoinColumn(name = "attribute_id")
     private Attribute attribute;
+
     /*
     @Column(name = "supported")
     @Enumerated(EnumType.STRING)
     private Supported supported;*/
 
-    @ElementCollection
-    @MapKeyColumn(name = "attribute_id")
-    @JoinColumn(name="supported_status_id") @Enumerated(EnumType.STRING)
-    //@CollectionTable(name="browser_to_attribute", joinColumns=@JoinColumn(name="browser_id"))
-    private Map<Attribute, Supported> attributeSupported = new HashMap<>();
-
     //TODO: store some statistics
 
-    public BrowserSupportedId getId() {
-        return id;
-    }
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Column(name = "supported_status_id")
+    @MapKeyColumn(name = "attribute_id")
+    @CollectionTable(name = "browser_to_attribute_status", joinColumns = @JoinColumn(name = "browser_to_attribute_id"))
+    private Map<Attribute, String> attributeSupported = new HashMap<>();
 
     @Override
     public String toString() {

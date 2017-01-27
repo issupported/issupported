@@ -7,13 +7,14 @@ INSERT INTO public.browser (id, name, version) VALUES (3, 'Chrome', '52');
 INSERT INTO public.browser (id, name, version) VALUES (4, 'IE', '8');
 INSERT INTO public.browser (id, name, version) VALUES (5, 'IE', '11');
 
-INSERT INTO public.browser_to_attribute (browser_id, attribute_id, supported) VALUES (1, 1, 'FULL');
-INSERT INTO public.browser_to_attribute (browser_id, attribute_id, supported) VALUES (2, 1, 'FULL');
-INSERT INTO public.browser_to_attribute (browser_id, attribute_id, supported) VALUES (3, 1, 'FULL');
-INSERT INTO public.browser_to_attribute (browser_id, attribute_id, supported) VALUES (1, 2, 'FULL');
-INSERT INTO public.browser_to_attribute (browser_id, attribute_id, supported) VALUES (2, 2, 'FULL');
-INSERT INTO public.browser_to_attribute (browser_id, attribute_id, supported) VALUES (3, 2, 'FULL');
-INSERT INTO public.browser_to_attribute (browser_id, attribute_id, supported) VALUES (4, 2, 'PARTIAL');
-INSERT INTO public.browser_to_attribute (browser_id, attribute_id, supported) VALUES (5, 1, 'NOT');
-INSERT INTO public.browser_to_attribute (browser_id, attribute_id, supported) VALUES (4, 1, 'FULL');
-INSERT INTO public.browser_to_attribute (browser_id, attribute_id, supported) VALUES (5, 2, 'FULL');
+
+INSERT INTO public.browser_to_attribute (id, browser_id, attribute_id, supported_status) VALUES (1, 1, 1, 'FULL');
+INSERT INTO public.browser_to_attribute (id, browser_id, attribute_id, supported_status) VALUES (2, 2, 1, 'FULL');
+INSERT INTO public.browser_to_attribute (id, browser_id, attribute_id, supported_status) VALUES (3, 3, 1, 'FULL');
+INSERT INTO public.browser_to_attribute (id, browser_id, attribute_id, supported_status) VALUES (4, 1, 2, 'FULL');
+INSERT INTO public.browser_to_attribute (id, browser_id, attribute_id, supported_status) VALUES (5, 2, 2, 'FULL');
+INSERT INTO public.browser_to_attribute (id, browser_id, attribute_id, supported_status) VALUES (6, 3, 2, 'FULL');
+INSERT INTO public.browser_to_attribute (id, browser_id, attribute_id, supported_status) VALUES (7, 4, 2, 'PARTIAL');
+INSERT INTO public.browser_to_attribute (id, browser_id, attribute_id, supported_status) VALUES (8, 5, 1, 'NOT');
+INSERT INTO public.browser_to_attribute (id, browser_id, attribute_id, supported_status) VALUES (9, 4, 1, 'FULL');
+INSERT INTO public.browser_to_attribute (id, browser_id, attribute_id, supported_status) VALUES (10, 5, 2, 'FULL');

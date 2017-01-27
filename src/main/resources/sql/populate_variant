@@ -1,0 +1,35 @@
+INSERT INTO public.attribute (id, name) VALUES (1, 'border-radius');
+INSERT INTO public.attribute (id, name) VALUES (2, 'cursor');
+
+INSERT INTO public.browser (id, name, version) VALUES (1, 'Chrome', '49');
+INSERT INTO public.browser (id, name, version) VALUES (2, 'Chrome', '51');
+INSERT INTO public.browser (id, name, version) VALUES (3, 'Chrome', '52');
+INSERT INTO public.browser (id, name, version) VALUES (4, 'IE', '8');
+INSERT INTO public.browser (id, name, version) VALUES (5, 'IE', '11');
+
+INSERT INTO public.supported_status (id, status) VALUES (1, 'FULL');
+INSERT INTO public.supported_status (id, status) VALUES (2, 'PARTIAL');
+INSERT INTO public.supported_status (id, status) VALUES (3, 'NOT');
+
+
+INSERT INTO public.browser_to_attribute (id, browser_id, attribute_id) VALUES (1, 1, 1);
+INSERT INTO public.browser_to_attribute (id, browser_id, attribute_id) VALUES (2, 2, 1);
+INSERT INTO public.browser_to_attribute (id, browser_id, attribute_id) VALUES (3, 3, 1);
+INSERT INTO public.browser_to_attribute (id, browser_id, attribute_id) VALUES (4, 1, 2);
+INSERT INTO public.browser_to_attribute (id, browser_id, attribute_id) VALUES (5, 2, 2);
+INSERT INTO public.browser_to_attribute (id, browser_id, attribute_id) VALUES (6, 3, 2);
+INSERT INTO public.browser_to_attribute (id, browser_id, attribute_id) VALUES (7, 4, 2);
+INSERT INTO public.browser_to_attribute (id, browser_id, attribute_id) VALUES (8, 5, 1);
+INSERT INTO public.browser_to_attribute (id, browser_id, attribute_id) VALUES (9, 4, 1);
+INSERT INTO public.browser_to_attribute (id, browser_id, attribute_id) VALUES (10, 5, 2);
+
+INSERT INTO public.browser_to_attribute_status (browser_to_attribute_id, supported_status_id) VALUES (1, 1);
+INSERT INTO public.browser_to_attribute_status (browser_to_attribute_id, supported_status_id) VALUES (2, 1);
+INSERT INTO public.browser_to_attribute_status (browser_to_attribute_id, supported_status_id) VALUES (3, 1);
+INSERT INTO public.browser_to_attribute_status (browser_to_attribute_id, supported_status_id) VALUES (4, 1);
+INSERT INTO public.browser_to_attribute_status (browser_to_attribute_id, supported_status_id) VALUES (5, 1);
+INSERT INTO public.browser_to_attribute_status (browser_to_attribute_id, supported_status_id) VALUES (6, 1);
+INSERT INTO public.browser_to_attribute_status (browser_to_attribute_id, supported_status_id) VALUES (7, 2);
+INSERT INTO public.browser_to_attribute_status (browser_to_attribute_id, supported_status_id) VALUES (8, 3);
+INSERT INTO public.browser_to_attribute_status (browser_to_attribute_id, supported_status_id) VALUES (9, 1);
+INSERT INTO public.browser_to_attribute_status (browser_to_attribute_id, supported_status_id) VALUES (10, 1);
