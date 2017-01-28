@@ -7,6 +7,8 @@ import com.issupported.model.BrowserSupported;
 import com.issupported.service.AttributeService;
 
 import com.issupported.service.BrowserSupportedService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +25,7 @@ public class FileController {
 
     private AttributeService attributeService;
     private BrowserSupportedService browserSupportedService;
+    private static final Logger LOGGER = LoggerFactory.getLogger(FileController.class);
 
     @RequestMapping(value = "/parse", method = RequestMethod.POST)
     public Map<List<BrowserSupported>, List<Position>> uploadFile(MultipartHttpServletRequest request, HttpServletResponse response) {
@@ -30,14 +33,17 @@ public class FileController {
         Iterator<String> itr = request.getFileNames();
 
         MultipartFile mpf = request.getFile(itr.next());
-        System.out.println(mpf.getSize()); //TODO: change to the logger
-
         String input = null;
-        try {
-            input = new String(mpf.getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        if(!mpf.isEmpty()) {
+            LOGGER.info("File: \"" + mpf.getOriginalFilename() + "\" with size " + mpf.getSize() + " bytes was uploaded");
+            try {
+                input = new String(mpf.getBytes());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
         AttributesFinder attributesFinder = new AttributesFinder(attributeService.getAll());
 
         Map<Attribute, List<Position>> parsedResult =attributesFinder.findAttributes(input);

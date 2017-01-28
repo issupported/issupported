@@ -1,7 +1,7 @@
 package com.issupported.model;
 
 
-public enum Supported {
+public enum SupportedStatus {
 
     FULL,
     PARTIAL,

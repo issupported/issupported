@@ -1,51 +1,65 @@
 package com.issupported.model;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
+
 
 @Entity
 @Table(name = "browser_to_attribute")
 public class BrowserSupported implements Serializable{
 
-    @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
-    @Column(name = "id")
-    private int id;
+    @EmbeddedId
+    private BrowserSupportedId id;
 
     @ManyToOne
-    @JoinColumn(name = "browser_id")
+    @JoinColumn(name = "browser_id", insertable = false, updatable = false)
     private Browser browser;
 
     @ManyToOne
-    @JoinColumn(name = "attribute_id")
+    @JoinColumn(name = "attribute_id", insertable = false, updatable = false)
     private Attribute attribute;
 
-    /*
-    @Column(name = "supported")
+    @Column(name = "supported_status")
     @Enumerated(EnumType.STRING)
-    private Supported supported;*/
+    private SupportedStatus supportedStatus;
 
     //TODO: store some statistics
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @Column(name = "supported_status_id")
-    @MapKeyColumn(name = "attribute_id")
-    @CollectionTable(name = "browser_to_attribute_status", joinColumns = @JoinColumn(name = "browser_to_attribute_id"))
-    private Map<Attribute, String> attributeSupported = new HashMap<>();
+
+    public BrowserSupportedId getId() {
+        return id;
+    }
+
+    public Browser getBrowser() {
+        return browser;
+    }
+
+    public void setBrowser(Browser browser) {
+        this.browser = browser;
+    }
+
+    public Attribute getAttribute() {
+        return attribute;
+    }
+
+    public void setAttribute(Attribute attribute) {
+        this.attribute = attribute;
+    }
+
+    public SupportedStatus getSupportedStatus() {
+        return supportedStatus;
+    }
+
+    public void setSupportedStatus(SupportedStatus supportedStatus) {
+        this.supportedStatus = supportedStatus;
+    }
 
     @Override
     public String toString() {
         return "BrowserSupported{" +
-                "id=" + id +
-                ", browser=" + browser +
-                ", attributeSupported=" + attributeSupported +
+                "browser=" + browser +
+                ", attribute=" + attribute +
+                ", supportedStatus=" + supportedStatus +
                 '}';
     }
 }
