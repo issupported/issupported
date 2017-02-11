@@ -60,7 +60,8 @@ myApp.controller('MainCtrl', ['$scope', 'fileUpload', function ($scope, fileUplo
                 console.log('File Uploaded sucessfully');
             }
             else {
-                location.reload();
+                console.log('error');
+                // location.reload();
                 $scope.FileMessage = 'please upload correct File Name, File extension should be .css or to big size file';
 
             }
@@ -70,27 +71,27 @@ myApp.controller('MainCtrl', ['$scope', 'fileUpload', function ($scope, fileUplo
 
 }]);
 
-myApp.directive('onReadFile', function ($parse) {
-    return {
-        restrict: 'A',
-        scope: false,
-        link: function(scope, element, attrs) {
-            var fn = $parse(attrs.onReadFile);
-
-            element.on('change', function(onChangeEvent) {
-                var reader = new FileReader();
-
-                reader.onload = function(onLoadEvent) {
-                    scope.$apply(function() {
-                        fn(scope, {$fileContent:onLoadEvent.target.result});
-                    });
-                };
-
-                reader.readAsText((onChangeEvent.srcElement || onChangeEvent.target).files[0]);
-            });
-        }
-    };
-});
+// myApp.directive('onReadFile', function ($parse) {
+//     return {
+//         restrict: 'A',
+//         scope: false,
+//         link: function(scope, element, attrs) {
+//             var fn = $parse(attrs.onReadFile);
+//
+//             element.on('change', function(onChangeEvent) {
+//                 var reader = new FileReader();
+//
+//                 reader.onload = function(onLoadEvent) {
+//                     scope.$apply(function() {
+//                         fn(scope, {$fileContent:onLoadEvent.target.result});
+//                     });
+//                 };
+//
+//                 reader.readAsText((onChangeEvent.srcElement || onChangeEvent.target).files[0]);
+//             });
+//         }
+//     };
+// });
 
 myApp.service('fileUpload', ['$http', function ($http) {
     this.uploadFileToUrl = function (file, uploadUrl) {
